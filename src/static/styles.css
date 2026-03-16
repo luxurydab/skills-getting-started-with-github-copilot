@@ -2,30 +2,49 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  --page-bg: linear-gradient(180deg, #f4efe6 0%, #eef3ff 100%);
+  --panel-bg: rgba(255, 255, 255, 0.92);
+  --panel-border: rgba(17, 46, 81, 0.08);
+  --headline: #112e51;
+  --accent: #e07a5f;
+  --accent-dark: #bf5a3e;
+  --text-main: #233044;
+  --text-muted: #5d6b82;
+  --card-bg: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  --card-border: rgba(17, 46, 81, 0.12);
+  --participants-bg: #f5efe6;
   line-height: 1.6;
-  color: #333;
+  color: var(--text-main);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
+  padding: 24px;
+  background: var(--page-bg);
+  min-height: 100vh;
 }
 
 header {
   text-align: center;
-  padding: 20px 0;
+  padding: 28px 24px;
   margin-bottom: 30px;
-  background-color: #1a237e;
+  background: linear-gradient(135deg, #112e51 0%, #1e4f7a 100%);
   color: white;
-  border-radius: 5px;
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(17, 46, 81, 0.18);
 }
 
 header h1 {
   margin-bottom: 10px;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: 0.03em;
+}
+
+header h2 {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 500;
 }
 
 main {
@@ -37,15 +56,17 @@ main {
 
 @media (min-width: 768px) {
   main {
-    grid-template-columns: 2fr 1fr;
+    align-items: flex-start;
   }
 }
 
 section {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: var(--panel-bg);
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 14px 35px rgba(36, 56, 99, 0.08);
+  backdrop-filter: blur(10px);
   width: 100%;
   max-width: 500px;
 }
@@ -53,25 +74,91 @@ section {
 section h3 {
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-  color: #1a237e;
+  border-bottom: 1px solid rgba(17, 46, 81, 0.12);
+  color: var(--headline);
 }
 
 .activity-card {
-  margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  margin-bottom: 18px;
+  padding: 20px;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background: var(--card-bg);
+  box-shadow: 0 12px 25px rgba(36, 56, 99, 0.08);
 }
 
 .activity-card h4 {
-  margin-bottom: 10px;
-  color: #0066cc;
+  margin-bottom: 8px;
+  color: var(--headline);
+  font-size: 1.25rem;
 }
 
 .activity-card p {
   margin-bottom: 8px;
+}
+
+.activity-description {
+  color: var(--text-muted);
+}
+
+.activity-meta strong {
+  color: var(--headline);
+}
+
+.participants-section {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--participants-bg);
+}
+
+.participants-heading {
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: var(--headline);
+}
+
+.participants-list {
+  padding-left: 0;
+  color: var(--text-main);
+  list-style: none;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.participant-email {
+  flex: 1;
+  word-break: break-all;
+}
+
+.delete-participant-btn {
+  background: none;
+  border: none;
+  color: #c62828;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.delete-participant-btn:hover {
+  background: #ffeaea;
+}
+
+.participants-list li + li {
+  margin-top: 6px;
+}
+
+.participants-empty {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 .form-group {
@@ -88,24 +175,27 @@ section h3 {
 .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid rgba(17, 46, 81, 0.14);
+  border-radius: 12px;
   font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.94);
 }
 
 button {
-  background-color: #1a237e;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 18px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 20px rgba(224, 122, 95, 0.24);
 }
 
 button:hover {
-  background-color: #3949ab;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(224, 122, 95, 0.28);
 }
 
 .message {
@@ -140,5 +230,5 @@ footer {
   text-align: center;
   margin-top: 30px;
   padding: 20px;
-  color: #666;
+  color: var(--text-muted);
 }
