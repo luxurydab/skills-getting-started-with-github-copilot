@@ -150,7 +150,6 @@ section h3 {
 .delete-participant-btn:hover {
   background: #ffeaea;
 }
-}
 
 .participants-list li + li {
   margin-top: 6px;
